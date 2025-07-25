@@ -1,6 +1,6 @@
 {
   "name": "perpo",
-  "displayName": "Perplexity Copilot",
+  "displayName": "Perpo - AI Code Completion",
   "publisher": "MIMOMODE",
   "description": "AI-powered code completion using Perplexity API",
   "version": "0.0.1",
@@ -8,12 +8,37 @@
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "ai",
+    "completion",
+    "perplexity",
+    "copilot",
+    "code",
+    "assistant",
+    "inline",
+    "suggestions"
   ],
   "activationEvents": [
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
+  "icon": "icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MIMOMODE/perpo.git"
+  },
+  "homepage": "https://github.com/MIMOMODE/perpo",
+  "bugs": {
+    "url": "https://github.com/MIMOMODE/perpo/issues"
+  },
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
   "contributes": {
     "commands": [
       {
@@ -41,7 +66,17 @@
         "perpo.model": {
           "type": "string",
           "default": "sonar",
-          "description": "Perplexity model to use"
+          "description": "Perplexity model to use",
+          "enum": [
+            "sonar",
+            "sonar-pro",
+            "sonar-reasoning"
+          ],
+          "enumDescriptions": [
+            "Fast and cost-effective (recommended)",
+            "Enhanced capabilities",
+            "Advanced reasoning (more verbose)"
+          ]
         }
       }
     }
@@ -49,7 +84,9 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/node": "^16.18.126",
